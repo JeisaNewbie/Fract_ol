@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_init.c                                         :+:      :+:    :+:   */
+/*   img_init_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:15:56 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/01/27 10:13:58 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/01/27 10:44:25 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 int	init_j(t_fractol *params)
 {
@@ -53,6 +53,25 @@ int	init_m(t_fractol *params)
 	return (1);
 }
 
+int	init_b(t_fractol *params)
+{
+	params->mlx = mlx_init ();
+	params->width = 1000;
+	params->height = 1000;
+	params->x_ab = 4.0;
+	params->y_ab = 4.0;
+	params->x_c = 0;
+	params->y_c = 0;
+	params->zoom_x = params->x_ab / params->width;
+	params->zoom_y = params->y_ab / params->height;
+	params->fractol = 'B';
+	params->win = mlx_new_window (params->mlx, params->width,
+			params->height, "Burningship");
+	if (!params->win)
+		return (0);
+	return (1);
+}
+
 int	img_init(t_fractol *params)
 {
 	params->img = mlx_new_image (params->mlx, params->width, params->height);
@@ -73,6 +92,8 @@ int	params_init(char c, t_fractol *params)
 		i = init_j (params);
 	else if (c == 'M')
 		i = init_m (params);
+	else if (c == 'B')
+		i = init_b (params);
 	else
 		return (0);
 	if (!i)

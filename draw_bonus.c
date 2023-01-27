@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhwang2 <jhwang2@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 19:16:20 by jhwang2           #+#    #+#             */
-/*   Updated: 2023/01/27 10:13:00 by jhwang2          ###   ########.fr       */
+/*   Updated: 2023/01/27 10:44:00 by jhwang2          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 void	redraw(t_fractol *params)
 {
@@ -38,6 +38,8 @@ int	draw(t_fractol *params)
 		prt_mand (params);
 	else if (params->fractol == 'J')
 		prt_jul (params);
+	else if (params->fractol == 'B')
+		prt_burn (params);
 	else
 		return (1);
 	return (0);
